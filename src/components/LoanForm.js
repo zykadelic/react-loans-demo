@@ -60,6 +60,9 @@ function LoanForm(props) {
           value={apr}
           onChange={e => setApr(e.target.value)}
         />%
+      </div>
+
+      <div className="u-tableCell">
         <button type="submit">Add</button>
       </div>
     </form>

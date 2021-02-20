@@ -50,6 +50,12 @@ function Loans() {
     }));
   }
 
+  const removeLoan = function(index) {
+    let newLoans = [...loans]; // copy array
+    newLoans.splice(index, 1); // delete element
+    setLoans(newLoans);
+  }
+
   return (
     <table className="Loans">
       <thead>
@@ -58,6 +64,7 @@ function Loans() {
           <th>Loan amount</th>
           <th>Monthly fees</th>
           <th>APR</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -67,10 +74,13 @@ function Loans() {
             <td>{loan.amount} kr</td>
             <td>{loan.fee} kr</td>
             <td>{loan.apr}%</td>
+            <td>
+              <button onClick={removeLoan.bind(this, index)}>Remove</button>
+            </td>
           </tr>
         ))}
         <tr>
-          <td colSpan="4">
+          <td colSpan="5">
             <LoanForm addLoan={addLoan} />
           </td>
         </tr>
@@ -81,6 +91,7 @@ function Loans() {
           <td>{totalAmount()} kr</td>
           <td>{totalFee()} kr</td>
           <td>{totalAPR()}%</td>
+          <td></td>
         </tr>
       </tfoot>
     </table>
