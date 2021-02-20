@@ -8,3 +8,10 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+.u-tableRow {
+  display: table-row;
+}
+.u-tableCell {
+  display: table-cell;
+}
