@@ -9,10 +9,18 @@ function LoanForm(props) {
   const handleSubmit = function(e) {
     e.preventDefault();
     props.addLoan({ creditor, amount, fee, apr });
+    e.target.reset();
+  }
+
+  const handleReset = function() {
+    setCreditor('');
+    setAmount(0);
+    setFee(0);
+    setApr(0);
   }
 
   return (
-    <form className="u-tableRow" onSubmit={handleSubmit}>
+    <form className="u-tableRow" onSubmit={handleSubmit} onReset={handleReset}>
       <div className="u-tableCell">
         <label htmlFor="creditor">Creditor</label><br />
         <input
