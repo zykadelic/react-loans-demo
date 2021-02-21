@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import Loans from './components/Loans';
 
 function App() {
