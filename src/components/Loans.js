@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { localeCurrency, localePercent } from '../shared/utilities';
 import LoanForm from './LoanForm';
 
 function Loans() {
@@ -33,7 +34,7 @@ function Loans() {
     // note that the values in this array is not representative of what the *actual* value would be,
     // as it uses the percent-number (i.e. 5.2) instead of the actual rate (0.052), but as we're
     // only interested in the total percent-number here, converting the rate back and forth would
-    // just be an unnecessary extra calculation
+    // just be an unnecessary extra calculation (and more prone to rounding errors...)
     const values = loans.map(loan => loan.amount * loan.apr);
 
     return values.reduce((a, b) => a + b, 0) / totalAmount();
@@ -71,9 +72,9 @@ function Loans() {
         {loans.map((loan, index) => (
           <tr key={index}>
             <td>{loan.creditor}</td>
-            <td>{loan.amount} kr</td>
-            <td>{loan.fee} kr</td>
-            <td>{loan.apr}%</td>
+            <td>{localeCurrency(loan.amount)}</td>
+            <td>{localeCurrency(loan.fee)}</td>
+            <td>{localePercent(loan.apr)}</td>
             <td>
               <button onClick={removeLoan.bind(this, index)}>Remove</button>
             </td>
@@ -88,9 +89,9 @@ function Loans() {
       <tfoot>
         <tr>
           <td>Total:</td>
-          <td>{totalAmount()} kr</td>
-          <td>{totalFee()} kr</td>
-          <td>{totalAPR()}%</td>
+          <td>{localeCurrency(totalAmount())}</td>
+          <td>{localeCurrency(totalFee())}</td>
+          <td>{localePercent(totalAPR())}</td>
           <td></td>
         </tr>
       </tfoot>
