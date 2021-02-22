@@ -2,6 +2,8 @@
 
 This is a small React app that allows you to input and calculate your accumulated loan cost and annual percentage rate (APR). It was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), and uses [Redux Persist](https://github.com/rt2zz/redux-persist) for remembering your data inputs between page loads.
 
+![preview](./public/preview.png)
+
 ## To run locally
 Run `npm install` from the cloned repository to install all dependencies.
 
