@@ -13,6 +13,7 @@
   display: grid;
   grid: auto-flow / auto repeat(3, minmax(120px, min-content)) min-content;
   gap: .5rem 0;
+  max-width: 100%;
 
   &__item {
     padding: 0 .75rem;
