@@ -36,7 +36,9 @@ function Loans() {
           <th className="grid__item grid__item--header">Creditor name</th>
           <th className="grid__item grid__item--header grid__item--numerical">Loan amount</th>
           <th className="grid__item grid__item--header grid__item--numerical">Monthly fees</th>
-          <th className="grid__item grid__item--header grid__item--numerical">APR</th>
+          <th className="grid__item grid__item--header grid__item--numerical">
+            <span className="helpText" data-text="Annual Percentage Rate">APR</span>
+          </th>
           <th className="grid__item"></th>
         </tr>
       </thead>

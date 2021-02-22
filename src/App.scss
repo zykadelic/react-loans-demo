@@ -115,6 +115,58 @@
   }
 }
 
+// good enough in a pinch; lacks support for going out-of-view on top of the viewport
+// and for long texts (no line breaks)
+.helpText {
+  position: relative;
+  cursor: help;
+
+  // the tooltip
+  &::before {
+    content: attr(data-text);
+    position: absolute;
+    bottom: 100%;
+
+    // x-center
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    padding: .2rem .5rem;
+    border-radius: .5rem;
+    background: var(--color-primary--contrast);
+    box-shadow: 0 1px 2px rgba(black, .1);
+    font-size: .9rem; // note! rem not em here, for not blowing out of proportion
+    font-weight: normal;
+    cursor: text;
+
+    transition-property: opacity, margin-bottom, box-shadow;
+    transition-duration: .2s;
+  }
+  &:hover::before {
+    opacity: 1;
+    visibility: visible;
+    margin-bottom: .2rem;
+    box-shadow: 0 1px 2px rgba(black, .1), 0 3px 8px rgba(black, .5);
+  }
+
+  // the "help icon"
+  &::after {
+    content: '?';
+    display: inline-block;
+    width: 1.3em;
+    height: 1.3em;
+    margin-left: .3em;
+    border-radius: 100%;
+    background: rgba(black, .3);
+    font-size: .8em;
+    line-height: 1.3em;
+    text-align: center;
+  }
+}
+
 
 //== Utility classes
 
