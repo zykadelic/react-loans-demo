@@ -5,17 +5,17 @@ export const loansSlice = createSlice({
   initialState: {
     list: [
       // sample data:
-      // {
-      //   creditor: 'Ikanobanken',
-      //   amount: 36000,
-      //   fee: 50,
-      //   apr: 7.54
-      // }, {
-      //   creditor: 'Brocc',
-      //   amount: 150000,
-      //   fee: 0,
-      //   apr: 5.2
-      // }
+      {
+        creditor: 'Ikanobanken',
+        amount: 36000,
+        fee: 50,
+        apr: 7.54
+      }, {
+        creditor: 'Brocc',
+        amount: 150000,
+        fee: 0,
+        apr: 5.2
+      }
     ]
   },
   reducers: {
