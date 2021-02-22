@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { localeCurrency, localePercent } from '../shared/utilities';
-import LoanForm from './LoanForm';
+import { localeCurrency, localePercent } from '../../shared/utilities';
+import LoanForm from '../LoanForm';
 
 function Loans() {
   const [loans, setLoans] = useState([

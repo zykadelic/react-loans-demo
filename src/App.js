@@ -1,5 +1,5 @@
 import './App.scss';
-import Loans from './components/Loans';
+import Loans from './components/loans/Loans';
 
 function App() {
   return (
