@@ -1,6 +1,9 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addLoan } from './loans/loansSlice';
 
-function LoanForm(props) {
+function LoanForm() {
+  const dispatch = useDispatch();
   const [creditor, setCreditor] = useState('');
   const [amount, setAmount] = useState(0);
   const [fee, setFee] = useState(0);
@@ -8,7 +11,7 @@ function LoanForm(props) {
 
   const handleSubmit = function(e) {
     e.preventDefault();
-    props.addLoan({ creditor, amount, fee, apr });
+    dispatch(addLoan({ creditor, amount, fee, apr }));
     e.target.reset();
   }
 

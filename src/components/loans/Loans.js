@@ -1,22 +1,11 @@
-import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { removeLoan, loansSelector } from './loansSlice';
 import { localeCurrency, localePercent } from '../../shared/utilities';
 import LoanForm from '../LoanForm';
 
 function Loans() {
-  const [loans, setLoans] = useState([
-    // sample data:
-    // {
-    //   creditor: 'Ikanobanken',
-    //   amount: 36000,
-    //   fee: 50,
-    //   apr: 7.54
-    // }, {
-    //   creditor: 'Brocc',
-    //   amount: 150000,
-    //   fee: 0,
-    //   apr: 5.2
-    // }
-  ]);
+  const loans = useSelector(loansSelector);
+  const dispatch = useDispatch();
 
   const totalAmount = function() {
     return loans.reduce((sum, loan) => sum + loan.amount, 0);
@@ -40,23 +29,6 @@ function Loans() {
     return values.reduce((a, b) => a + b, 0) / totalAmount();
   }
 
-  const addLoan = function({ creditor, amount, fee, apr }) {
-    // the "+amount" etc is a number typecast, regardless if it's an int or a float,
-    // so it's not stored as a string
-    setLoans(loans.concat({
-      creditor,
-      amount: +amount,
-      fee: +fee,
-      apr: +apr
-    }));
-  }
-
-  const removeLoan = function(index) {
-    let newLoans = [...loans]; // copy array
-    newLoans.splice(index, 1); // delete element
-    setLoans(newLoans);
-  }
-
   return (
     <table className="grid">
       <thead className="u-display-contents">
@@ -77,7 +49,7 @@ function Loans() {
             <td className="grid__item grid__item--numerical">{localePercent(loan.apr)}</td>
             <td className="grid__item">
               <button
-                onClick={removeLoan.bind(this, index)}
+                onClick={() => dispatch(removeLoan(index))}
                 className="button button--danger button--small"
               >
                 Remove
@@ -87,7 +59,7 @@ function Loans() {
         ))}
         <tr className="u-display-contents">
           <td colSpan="5" className="u-display-contents">
-            <LoanForm addLoan={addLoan} />
+            <LoanForm />
           </td>
         </tr>
       </tbody>
