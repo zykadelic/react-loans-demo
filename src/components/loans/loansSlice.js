@@ -21,13 +21,11 @@ export const loansSlice = createSlice({
   reducers: {
     // accepted payload: { creditor, amount, fee, apr }
     addLoan: (state, action) => {
-      // the "+amount" etc is a number typecast, regardless if it's an int or a float,
-      // so it's not stored as a string
       state.list.push({
         creditor: action.payload.creditor,
-        amount:   +action.payload.amount,
-        fee:      +action.payload.fee,
-        apr:      +action.payload.apr
+        amount:   Number(action.payload.amount),
+        fee:      Number(action.payload.fee),
+        apr:      Number(action.payload.apr)
       });
     },
     // accepted payload: index (int)
