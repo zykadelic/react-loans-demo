@@ -1,17 +1,123 @@
-.App-header {
-  background-color: #282c34;
+#root {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.u-tableRow {
-  display: table-row;
+
+//== Style components
+
+.grid {
+  display: grid;
+  grid: auto-flow / auto repeat(3, minmax(120px, min-content)) min-content;
+  gap: .5rem 0;
+
+  &__item {
+    padding: 0 .75rem;
+    text-align: left;
+
+    &.field {
+      padding-right: .25rem;
+      padding-left: .25rem;
+    }
+
+    &--header,
+    &--footer {
+      padding-top: .25rem;
+      padding-bottom: .25rem;
+      font-size: 1.25em;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+    &--footer {
+      margin-top: .5rem;
+      border-top: 2px solid var(--color-primary);
+    }
+    &--numerical {
+      text-align: right;
+    }
+  }
 }
-.u-tableCell {
-  display: table-cell;
+
+.field {
+  &__label {
+    display: none;
+    // font-weight: bold;
+    // padding: 0 .5rem;
+  }
+
+  &__inputWrapper {
+    display: flex;
+    align-items: center;
+    height: 2.3rem;
+    background: var(--color-off-white);
+    border-radius: 6px;
+    cursor: text;
+    overflow: hidden;
+    color: var(--color-primary--contrast);
+    font-weight: bold;
+
+    &:focus-within {
+      box-shadow: 0 0 1px 3px var(--color-primary);
+    }
+  }
+
+  &__input {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 2.1em;
+    height: 100%;
+    background: transparent;
+    border: 0;
+    outline: none;
+    overflow: hidden;
+    padding: 0 .5rem;
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    text-align: inherit;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &[type="number"] {
+      padding-right: 0.1rem; // make room for the numerical stepper
+    }
+  }
+
+  &__suffix {
+    padding-right: .5rem;
+  }
+}
+
+.button {
+  box-sizing: border-box;
+  width: 100%;
+  padding: .6rem;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: inherit;
+  font-weight: bold;
+  text-align: center;
+
+  &--primary {
+    background-color: var(--color-primary);
+    color: var(--color-off-white);
+  }
+  &--danger {
+    padding-top: .4rem;
+    padding-bottom: .4rem;
+    background-color: var(--color-danger);
+    color: var(--color-off-white);
+    font-size: .85em;
+  }
+}
+
+
+//== Utility classes
+
+.u-display-contents {
+  display: contents;
 }

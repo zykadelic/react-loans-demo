@@ -20,50 +20,70 @@ function LoanForm(props) {
   }
 
   return (
-    <form className="u-tableRow" onSubmit={handleSubmit} onReset={handleReset}>
-      <div className="u-tableCell">
-        <label htmlFor="creditor">Creditor</label><br />
-        <input
-          type="text"
-          id="creditor"
-          value={creditor}
-          onChange={e => setCreditor(e.target.value)}
-        />
-      </div>
+    <form className="u-display-contents" onSubmit={handleSubmit} onReset={handleReset}>
+      <label htmlFor="creditor" className="grid__item field">
+        <span className="field__label">Creditor</span>
+        <span className="field__inputWrapper">
+          <input
+            type="text"
+            id="creditor"
+            placeholder="Creditor name"
+            value={creditor}
+            onChange={e => setCreditor(e.target.value)}
+            className="field__input"
+            required
+          />
+        </span>
+      </label>
 
-      <div className="u-tableCell">
-        <label htmlFor="amount">Loan amount</label><br />
-        <input
-          type="number"
-          id="amount"
-          value={amount}
-          onChange={e => setAmount(e.target.value)}
-        />kr
-      </div>
+      <label htmlFor="amount" className="grid__item grid__item--numerical field">
+        <span className="field__label">Loan amount</span>
+        <span className="field__inputWrapper">
+          <input
+            type="number"
+            id="amount"
+            value={amount}
+            onChange={e => setAmount(e.target.value)}
+            className="field__input"
+            required
+          />
+          <span className="field__suffix">kr</span>
+        </span>
+      </label>
 
-      <div className="u-tableCell">
-        <label htmlFor="fee">Monthly fees</label><br />
-        <input
-          type="number"
-          id="fee"
-          value={fee}
-          onChange={e => setFee(e.target.value)}
-        />kr
-      </div>
+      <label htmlFor="fee" className="grid__item grid__item--numerical field">
+        <span className="field__label">Monthly fees</span>
+        <span className="field__inputWrapper">
+          <input
+            type="number"
+            id="fee"
+            value={fee}
+            onChange={e => setFee(e.target.value)}
+            className="field__input"
+            required
+          />
+          <span className="field__suffix">kr</span>
+        </span>
+      </label>
 
-      <div className="u-tableCell">
-        <label htmlFor="apr">APR</label><br />
-        <input
-          type="number"
-          id="apr"
-          step="0.01"
-          value={apr}
-          onChange={e => setApr(e.target.value)}
-        />%
-      </div>
+      <label htmlFor="apr" className="grid__item grid__item--numerical field">
+        <span className="field__label">APR</span>
+        <span className="field__inputWrapper">
+          <input
+            type="number"
+            id="apr"
+            step="0.01"
+            value={apr}
+            onChange={e => setApr(e.target.value)}
+            className="field__input"
+            required
+          />
+          <span className="field__suffix">%</span>
+        </span>
+      </label>
 
-      <div className="u-tableCell">
-        <button type="submit">Add</button>
+      <div className="grid__item">
+        <button type="submit" className="button button--primary">Add</button>
       </div>
     </form>
   )

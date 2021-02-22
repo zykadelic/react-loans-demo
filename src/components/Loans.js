@@ -58,41 +58,46 @@ function Loans() {
   }
 
   return (
-    <table className="Loans">
-      <thead>
-        <tr>
-          <th>Creditor Name</th>
-          <th>Loan amount</th>
-          <th>Monthly fees</th>
-          <th>APR</th>
-          <th></th>
+    <table className="grid">
+      <thead className="u-display-contents">
+        <tr className="u-display-contents">
+          <th className="grid__item grid__item--header">Creditor name</th>
+          <th className="grid__item grid__item--header grid__item--numerical">Loan amount</th>
+          <th className="grid__item grid__item--header grid__item--numerical">Monthly fees</th>
+          <th className="grid__item grid__item--header grid__item--numerical">APR</th>
+          <th className="grid__item"></th>
         </tr>
       </thead>
-      <tbody>
+      <tbody className="u-display-contents">
         {loans.map((loan, index) => (
-          <tr key={index}>
-            <td>{loan.creditor}</td>
-            <td>{localeCurrency(loan.amount)}</td>
-            <td>{localeCurrency(loan.fee)}</td>
-            <td>{localePercent(loan.apr)}</td>
-            <td>
-              <button onClick={removeLoan.bind(this, index)}>Remove</button>
+          <tr key={index} className="u-display-contents">
+            <td className="grid__item">{loan.creditor}</td>
+            <td className="grid__item grid__item--numerical">{localeCurrency(loan.amount)}</td>
+            <td className="grid__item grid__item--numerical">{localeCurrency(loan.fee)}</td>
+            <td className="grid__item grid__item--numerical">{localePercent(loan.apr)}</td>
+            <td className="grid__item">
+              <button
+                onClick={removeLoan.bind(this, index)}
+                className="button button--danger button--small"
+              >
+                Remove
+              </button>
             </td>
           </tr>
         ))}
-        <tr>
-          <td colSpan="5">
+        <tr className="u-display-contents">
+          <td colSpan="5" className="u-display-contents">
             <LoanForm addLoan={addLoan} />
           </td>
         </tr>
       </tbody>
-      <tfoot>
-        <tr>
-          <td>Total:</td>
-          <td>{localeCurrency(totalAmount())}</td>
-          <td>{localeCurrency(totalFee())}</td>
-          <td>{localePercent(totalAPR())}</td>
-          <td></td>
+      <tfoot className="u-display-contents">
+        <tr className="u-display-contents">
+          <td className="grid__item grid__item--footer">Total</td>
+          <td className="grid__item grid__item--footer grid__item--numerical">{localeCurrency(totalAmount())}</td>
+          <td className="grid__item grid__item--footer grid__item--numerical">{localeCurrency(totalFee())}</td>
+          <td className="grid__item grid__item--footer grid__item--numerical">{localePercent(totalAPR())}</td>
+          <td className="grid__item"></td>
         </tr>
       </tfoot>
     </table>
