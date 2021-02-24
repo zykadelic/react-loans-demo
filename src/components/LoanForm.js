@@ -5,9 +5,9 @@ import { addLoan } from './loans/loansSlice';
 function LoanForm() {
   const dispatch = useDispatch();
   const [creditor, setCreditor] = useState('');
-  const [amount, setAmount] = useState(0);
-  const [fee, setFee] = useState(0);
-  const [apr, setApr] = useState(0);
+  const [amount, setAmount] = useState();
+  const [fee, setFee] = useState();
+  const [apr, setApr] = useState();
 
   const handleSubmit = function(e) {
     e.preventDefault();
@@ -17,9 +17,9 @@ function LoanForm() {
 
   const handleReset = function() {
     setCreditor('');
-    setAmount(0);
-    setFee(0);
-    setApr(0);
+    setAmount();
+    setFee();
+    setApr();
   }
 
   return (
@@ -45,6 +45,7 @@ function LoanForm() {
           <input
             type="number"
             id="amount"
+            placeholder="0"
             value={amount}
             onChange={e => setAmount(e.target.value)}
             className="field__input"
@@ -60,6 +61,7 @@ function LoanForm() {
           <input
             type="number"
             id="fee"
+            placeholder="0"
             value={fee}
             onChange={e => setFee(e.target.value)}
             className="field__input"
@@ -76,6 +78,7 @@ function LoanForm() {
             type="number"
             id="apr"
             step="0.01"
+            placeholder="0"
             value={apr}
             onChange={e => setApr(e.target.value)}
             className="field__input"
