@@ -86,6 +86,11 @@
       padding-right: 0.1rem; // make room for the numerical stepper
     }
   }
+  // match the suffix text to the "faded" placeholder style
+  &__input::placeholder,
+  &__input:placeholder-shown + &__suffix {
+    opacity: .5;
+  }
 
   &__suffix {
     padding-right: .5rem;
